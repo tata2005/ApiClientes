@@ -3,6 +3,7 @@ package application.model.entity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 public class ServicoPrestado {
@@ -29,5 +30,8 @@ public class ServicoPrestado {
     // BigDecimal é usado para representar valores monetários com precisão.
     @Column
     private BigDecimal valor;
+
+    @Column
+    private LocalDate data;
 }
 
