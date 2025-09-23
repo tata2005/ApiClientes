@@ -9,8 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ClientesApplication {
 
-    // Este é o ponto de entrada da aplicação.
-    // O método main é executado quando você inicia o projeto.
+    /**
+     * Este é o ponto de entrada da aplicação.
+     * O método main é executado quando você inicia o projeto.
+     */
     public static void main(String[] args) {
         // Este comando inicia a aplicação Spring Boot.
         // Ele configura o contexto da aplicação, carrega os beans e inicia o servidor web (como Tomcat).

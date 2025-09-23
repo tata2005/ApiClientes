@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-public class Servico {
+public class ServicoPrestado {
 
     // Define o campo 'id' como chave primária da tabela.
     // O valor será gerado automaticamente pelo banco de dados.
