@@ -1,11 +1,20 @@
 package application.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ServicoPrestado {
 
     // Define o campo 'id' como chave primária da tabela.
@@ -32,6 +41,7 @@ public class ServicoPrestado {
     private BigDecimal valor;
 
     @Column
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
 }
 

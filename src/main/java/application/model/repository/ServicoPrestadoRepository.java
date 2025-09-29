@@ -2,18 +2,19 @@ package application.model.repository;
 
 import application.model.entity.ServicoPrestado;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-// Interface que representa o repositório da entidade ServicoPrestado.
-// Ela herda os métodos prontos da JpaRepository para facilitar o acesso ao banco de dados.
+import java.util.List;
+
+
 public interface ServicoPrestadoRepository extends JpaRepository<ServicoPrestado, Integer> {
-    // Ao estender JpaRepository, essa interface já possui métodos como:
-    // - save() → para salvar ou atualizar um serviço
-    // - findById() → para buscar um serviço pelo ID
-    // - findAll() → para listar todos os serviços
-    // - delete() → para remover um serviço
-    //
-    // O tipo <ServicoPrestado, Integer> indica:
-    // - ServicoPrestado é a entidade que será manipulada
-    // - Integer é o tipo da chave primária (id)
+
+    @Query(" select s from ServicoPrestado s join s.cliente c " +
+            "where upper( c.nome ) like upper( :nome ) and MONTH(s.data) =:mes  ")
+    List<ServicoPrestado> findByNomeClienteAndMes(
+            @Param("nome") String nome,
+            @Param("mes") Integer mes);
+
 }
 
