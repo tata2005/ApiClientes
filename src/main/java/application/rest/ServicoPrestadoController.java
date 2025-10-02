@@ -6,12 +6,11 @@ import application.model.repository.ClienteRepository;
 import application.model.repository.ServicoPrestadoRepository;
 import application.rest.dto.ServicoPrestadoDTO;
 import application.util.BigDecimalConverter;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;

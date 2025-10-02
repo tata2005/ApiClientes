@@ -2,10 +2,11 @@ package application.rest;
 
 import application.model.entity.Usuario;
 import application.model.repository.UsuarioRepository;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/usuarios")

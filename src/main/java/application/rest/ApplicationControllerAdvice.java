@@ -2,7 +2,6 @@ package application.rest;
 
 import application.rest.exception.ApiErrors;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -43,7 +42,7 @@ public class ApplicationControllerAdvice {
         String mensagemError = ex.getMessage();
 
         // Pega o código de status HTTP associado à exceção.
-        HttpStatusCode codigoStatus = ex.getStatusCode();
+        HttpStatus codigoStatus = ex.getStatus();
 
         // Cria um objeto ApiErrors com a mensagem de erro.
         ApiErrors apiErrors = new ApiErrors(mensagemError);
