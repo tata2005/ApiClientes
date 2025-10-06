@@ -2,6 +2,7 @@ package application.service;
 
 import application.model.entity.Usuario;
 import application.model.repository.UsuarioRepository;
+import application.rest.exception.UsuarioCadastradoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +15,14 @@ public class UsuarioService implements UserDetailsService {
 
     @Autowired
     private UsuarioRepository repository;
+
+    public Usuario salvar (Usuario usuario){
+        boolean exists = repository.existsByUsername(usuario.getUsername());
+        if(exists){
+            throw new UsuarioCadastradoException(usuario.getUsername());
+        }
+        return repository.save(usuario);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

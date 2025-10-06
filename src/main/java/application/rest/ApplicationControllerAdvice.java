@@ -39,7 +39,7 @@ public class ApplicationControllerAdvice {
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity handleResponseStatusException(ResponseStatusException ex) {
         // Pega a mensagem de erro da exceção.
-        String mensagemError = ex.getMessage();
+        String mensagemError = ex.getReason();
 
         // Pega o código de status HTTP associado à exceção.
         HttpStatus codigoStatus = ex.getStatus();

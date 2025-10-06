@@ -1,10 +1,12 @@
 package application.rest;
 
 import application.model.entity.Usuario;
-import application.model.repository.UsuarioRepository;
+import application.rest.exception.UsuarioCadastradoException;
+import application.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
@@ -13,11 +15,16 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class UsuarioController {
 
-    private final UsuarioRepository repository;
+    private final UsuarioService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void salvar(@RequestBody @Valid Usuario usuario) {
-        repository.save(usuario);
+        try{
+            service.salvar(usuario);
+        } catch (UsuarioCadastradoException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+
     }
 }
